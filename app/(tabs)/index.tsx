@@ -19,17 +19,17 @@ export default function HomePage() {
   async function test() {
     // 保存账号密码
     const data = {
-      id: 'id',
-      password: 'password',
+      id: '0',
+      password: '0',
     };
-    userLogin(data);
+    await userLogin(data);
   }
   async function test2() {
     const data = {
       term: '202401',
     };
     const res = await getApiV1JwchUserInfo(data);
-    console.log(res);
+    // console.log(res);
   }
 
   console.log(isLoading);
