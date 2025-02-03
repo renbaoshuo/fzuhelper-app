@@ -1,4 +1,5 @@
 import { getApiV1JwchCourseList } from '@/api/generate';
+import PageContainer from '@/components/page-container';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -30,7 +31,7 @@ export default function HomePage() {
 
   return (
     <>
-      <View className="flex-1 justify-center p-6">
+      <PageContainer className="justify-center p-6">
         <View>
           <Text>{isLoading}</Text>
           <Input value={term} onChangeText={text => setTerm(text)} />
@@ -109,7 +110,7 @@ export default function HomePage() {
             </Card>
           </TabsContent>
         </Tabs>
-      </View>
+      </PageContainer>
     </>
   );
 }

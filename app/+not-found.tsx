@@ -1,8 +1,8 @@
-import { Ionicons } from '@expo/vector-icons'; // 图标库
+import Ionicons from '@expo/vector-icons/Ionicons'; // 图标库
 import { Link, useNavigation } from 'expo-router';
 import { useLayoutEffect } from 'react';
 
-import { ThemedView } from '@/components/ThemedView';
+import PageContainer from '@/components/page-container';
 import { Button } from '@/components/ui/button';
 import { Text } from '@/components/ui/text';
 
@@ -18,21 +18,21 @@ export default function NotFoundScreen() {
   return (
     <>
       {/* 页面内容 */}
-      <ThemedView className="flex-1 items-center justify-center bg-white p-5">
+      <PageContainer className="items-center justify-center bg-background p-5">
         {/* 可爱表情图标 */}
         <Ionicons name="sad-outline" size={80} color="#FF6F61" />
 
         {/* 提示文字 */}
-        <Text className="mt-6 text-center text-lg font-semibold text-gray-800">哎呀，这个页面被小猫叼走啦！</Text>
-        <Text className="mt-2 text-center text-base text-gray-600">不用担心，你可以回到首页重新找路~</Text>
+        <Text className="mt-6 text-center text-xl font-semibold">哎呀，这个页面被小猫叼走啦！</Text>
+        <Text className="mt-2 text-center text-base text-muted-foreground">不用担心，你可以回到首页重新找路~</Text>
 
         {/* 返回首页按钮 */}
         <Link href="/" asChild replace>
-          <Button className="mt-8">
-            <Text className="text-lg">🏠 回到首页</Text>
+          <Button className="mt-8" size="lg">
+            <Text className="text-lg">回到首页</Text>
           </Button>
         </Link>
-      </ThemedView>
+      </PageContainer>
     </>
   );
 }

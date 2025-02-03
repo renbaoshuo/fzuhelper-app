@@ -1,34 +1,36 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { Stack, router } from 'expo-router';
+import { Image, Linking, Pressable, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 import {
   DescriptionList,
   DescriptionListDescription,
   DescriptionListRow,
   DescriptionListTerm,
 } from '@/components/DescriptionList';
-import { ThemedView } from '@/components/ThemedView';
+import PageContainer from '@/components/page-container';
 import { Text } from '@/components/ui/text';
+
 import { URL_PRIVACY_POLICY, URL_USER_AGREEMENT } from '@/lib/constants';
-import { AntDesign } from '@expo/vector-icons';
-import { Stack, router } from 'expo-router';
-import { Image, Linking, Pressable, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function AboutPage() {
   return (
     <>
       <Stack.Screen options={{ title: '关于福uu' }} />
 
-      <ThemedView className="flex-1">
+      <PageContainer>
         <View className="flex items-center p-12">
           <Image
             source={require('@/assets/images/icon_transparent.png')}
-            className="mb-6 h-20 w-20 rounded-full bg-white"
+            className="mb-6 h-20 w-20 rounded-full bg-background"
           />
           <View>
             <Text className="text-xl text-primary">7.0.0</Text>
           </View>
         </View>
 
-        <View className="flex-1 rounded-tr-4xl bg-white px-4 pt-8">
+        <View className="flex-1 rounded-tr-4xl bg-background px-4 pt-8">
           <DescriptionList className="gap-6">
             <DescriptionListRow>
               <DescriptionListTerm>版本更新</DescriptionListTerm>
@@ -46,7 +48,7 @@ export default function AboutPage() {
               <DescriptionListRow>
                 <DescriptionListTerm>官方网站</DescriptionListTerm>
                 <DescriptionListDescription>
-                  <AntDesign name="right" />
+                  <Ionicons name="chevron-forward" />
                 </DescriptionListDescription>
               </DescriptionListRow>
             </Pressable>
@@ -99,18 +101,18 @@ export default function AboutPage() {
             <Pressable
               className="flex-row items-center"
               onPress={() => {
-                Linking.openURL('http://www.beian.miit.gov.cn/');
+                Linking.openURL('https://beian.miit.gov.cn/');
               }}
             >
               <Text className="mr-1 text-sm text-muted-foreground">ICP备案号：闽ICP备19020557号-4A</Text>
-              <AntDesign name="right" size={10} />
+              <Ionicons name="chevron-forward" size={10} />
             </Pressable>
             <Text className="mb-6 text-sm text-muted-foreground">
               Copyright © 2017-{new Date().getFullYear()} west2-online. All Rights Reserved
             </Text>
           </SafeAreaView>
         </View>
-      </ThemedView>
+      </PageContainer>
     </>
   );
 }

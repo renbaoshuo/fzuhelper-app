@@ -1,5 +1,5 @@
 import { getApiV1JwchAcademicGpa } from '@/api/generate';
-import { ThemedView } from '@/components/ThemedView';
+import PageContainer from '@/components/page-container';
 import { Text } from '@/components/ui/text';
 import { useSafeResponseSolve } from '@/hooks/useSafeResponseSolve';
 import { useNavigation } from 'expo-router';
@@ -51,7 +51,7 @@ export default function GPAPage() {
   }, [isRefreshing, handleError]);
 
   return (
-    <ThemedView className="flex-1 bg-white">
+    <PageContainer className="bg-background">
       <ScrollView contentContainerStyle={{ padding: 16 }}>
         {/* 学术成绩数据列表 */}
         {academicData && (
@@ -85,6 +85,6 @@ export default function GPAPage() {
           </Text>
         </TouchableOpacity>
       </ScrollView>
-    </ThemedView>
+    </PageContainer>
   );
 }

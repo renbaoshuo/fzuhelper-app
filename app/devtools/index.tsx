@@ -1,4 +1,4 @@
-import { ThemedView } from '@/components/ThemedView';
+import PageContainer from '@/components/page-container';
 import { Button } from '@/components/ui/button';
 import { Text } from '@/components/ui/text';
 import { ACCESS_TOKEN_KEY, JWCH_COOKIES_KEY, JWCH_ID_KEY, YMT_ACCESS_TOKEN_KEY } from '@/lib/constants';
@@ -54,7 +54,7 @@ export default function HomePage() {
     <>
       <Stack.Screen options={{ title: NAVIGATION_TITLE }} />
 
-      <ThemedView>
+      <PageContainer>
         <KeyboardAwareScrollView className="h-full" keyboardShouldPersistTaps="handled">
           {/* 导航相关功能 */}
           <Text className="m-3 my-4 text-lg font-bold">Manager</Text>
@@ -124,7 +124,7 @@ export default function HomePage() {
             <Text>Set Invalid AccessToken (ymt)</Text>
           </Button>
         </KeyboardAwareScrollView>
-      </ThemedView>
+      </PageContainer>
     </>
   );
 }

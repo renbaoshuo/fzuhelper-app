@@ -1,5 +1,5 @@
 import { getApiV1JwchAcademicGpa } from '@/api/generate';
-import { ThemedView } from '@/components/ThemedView';
+import PageContainer from '@/components/page-container';
 import { Button } from '@/components/ui/button';
 import { Text } from '@/components/ui/text';
 import { useSafeResponseSolve } from '@/hooks/useSafeResponseSolve';
@@ -54,7 +54,7 @@ export default function EmptyRoomPage() {
   }, [isRefreshing, handleError]);
 
   return (
-    <ThemedView className="flex-1">
+    <PageContainer>
       <ScrollView contentContainerStyle={{ padding: 16 }}>
         {/* 学术成绩数据列表 */}
         {academicData && (
@@ -74,6 +74,6 @@ export default function EmptyRoomPage() {
           <Text>{isRefreshing ? '刷新中...' : '刷新学业情况'}</Text>
         </Button>
       </ScrollView>
-    </ThemedView>
+    </PageContainer>
   );
 }

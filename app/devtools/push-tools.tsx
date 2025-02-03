@@ -1,4 +1,4 @@
-import { ThemedView } from '@/components/ThemedView';
+import PageContainer from '@/components/page-container';
 import { Button } from '@/components/ui/button';
 import { Text } from '@/components/ui/text';
 import ExpoUmengModule from '@/modules/umeng-bridge';
@@ -101,7 +101,7 @@ export default function PushToolsPage() {
     <>
       <Stack.Screen options={{ title: NAVIGATION_TITLE }} />
 
-      <ThemedView>
+      <PageContainer>
         <KeyboardAwareScrollView className="h-full" keyboardShouldPersistTaps="handled">
           <Text style={styles.sectionTitle}>推送相关功能</Text>
 
@@ -147,7 +147,7 @@ export default function PushToolsPage() {
             <Text>Get All Tags</Text>
           </Button>
         </KeyboardAwareScrollView>
-      </ThemedView>
+      </PageContainer>
     </>
   );
 }

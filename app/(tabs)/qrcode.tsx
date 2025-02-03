@@ -2,9 +2,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Link, useFocusEffect } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Alert, View } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import QRCode from 'react-native-qrcode-svg';
 import { toast } from 'sonner-native';
 
+import PageContainer from '@/components/page-container';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -13,7 +15,6 @@ import { Text } from '@/components/ui/text';
 import { useSafeResponseSolve } from '@/hooks/useSafeResponseSolve';
 import { YMT_ACCESS_TOKEN_KEY, YMT_USERNAME_KEY } from '@/lib/constants';
 import YMTLogin, { IdentifyRespData, PayCodeRespData } from '@/lib/ymt-login';
-import { ScrollView } from 'react-native-gesture-handler';
 
 export default function YiMaTongPage() {
   const ymtLogin = useMemo(() => new YMTLogin(), []);
@@ -136,7 +137,10 @@ export default function YiMaTongPage() {
         </CardHeader>
 
         <CardContent className="flex-col items-center justify-center gap-4">
-          {codeContent ? <QRCode value={codeContent} size={320} color={codeColor} /> : <Text>Loading...</Text>}
+          {/* 这里使用 bg-white 来强制在各种颜色模式下的二维码背景都是白色 */}
+          <View className="mx-auto bg-white p-4">
+            {codeContent ? <QRCode size={200} value={codeContent} color={codeColor} /> : <Text>Loading...</Text>}
+          </View>
           <View className="flex-row gap-4">
             <Button onPress={logout} className="width-full flex-5">
               <Text>退出</Text>
@@ -155,7 +159,7 @@ export default function YiMaTongPage() {
                 消费码：适用于福州大学大门、生活区入口及宿舍楼门禁，不可用于桃李园消费。
               </Text>
             ) : (
-              <Text className="text-base text-muted-foreground">认证码：目前暂无实际用途。</Text>
+              <Text className="text-base text-muted-foreground">认证码：适用于福州大学铜盘校区入口门禁。</Text>
             )}
           </View>
         </CardFooter>
@@ -165,7 +169,7 @@ export default function YiMaTongPage() {
   );
 
   return (
-    <View className="flex-1">
+    <PageContainer>
       {accessToken ? (
         <ScrollView className="flex-1 px-6">
           <Tabs value={currentTab} onValueChange={setCurrentTab} className="my-6 flex-1 items-center">
@@ -199,6 +203,6 @@ export default function YiMaTongPage() {
           </Link>
         </View>
       )}
-    </View>
+    </PageContainer>
   );
 }

@@ -1,7 +1,9 @@
-import { ThemedView } from '@/components/ThemedView';
 import { Href, Link, useNavigation } from 'expo-router';
 import { useLayoutEffect } from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, TouchableOpacity, View } from 'react-native';
+
+import PageContainer from '@/components/page-container';
+import { Text } from '@/components/ui/text';
 
 // 定义菜单项的类型
 import { ImageSourcePropType } from 'react-native';
@@ -51,7 +53,7 @@ export default function AcademicPage() {
   }, [navigation]);
 
   return (
-    <ThemedView className="flex-1 bg-white p-4">
+    <PageContainer className="bg-background p-4">
       {/* 菜单列表 */}
       <View className="space-y-4">
         {menuItems.map((item, index) => (
@@ -60,7 +62,7 @@ export default function AcademicPage() {
               {/* 图标和名称 */}
               <View className="flex-row items-center space-x-4">
                 <Image source={item.icon} className="h-7 w-7" />
-                <Text className="ml-5 text-lg text-foreground">{item.name}</Text>
+                <Text className="ml-5 text-lg">{item.name}</Text>
               </View>
               {/* 右侧箭头 */}
               <Image source={require('assets/images/misc/ic_arrow_right.png')} className="h-5 w-5" />
@@ -68,6 +70,6 @@ export default function AcademicPage() {
           </Link>
         ))}
       </View>
-    </ThemedView>
+    </PageContainer>
   );
 }

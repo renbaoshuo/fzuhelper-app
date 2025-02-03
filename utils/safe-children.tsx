@@ -1,5 +1,6 @@
 import { Children } from 'react';
-import { Text } from 'react-native';
+
+import { Text } from '@/components/ui/text';
 
 type TextComponent = React.ComponentType<{ className?: string; children?: React.ReactNode }>;
 

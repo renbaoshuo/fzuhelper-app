@@ -1,8 +1,16 @@
-import { getApiV1JwchUserInfo, getApiV1LoginAccessToken } from '@/api/generate';
-import { ThemedView } from '@/components/ThemedView';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Stack, router } from 'expo-router';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Alert, Image, Linking, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { toast } from 'sonner-native';
+
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Text } from '@/components/ui/text';
+
+import { getApiV1JwchUserInfo, getApiV1LoginAccessToken } from '@/api/generate';
 import { useRedirectWithoutHistory } from '@/hooks/useRedirectWithoutHistory';
 import { useSafeResponseSolve } from '@/hooks/useSafeResponseSolve';
 import {
@@ -15,13 +23,6 @@ import {
   URL_USER_AGREEMENT,
 } from '@/lib/constants';
 import UserLogin from '@/lib/user-login';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Stack, router } from 'expo-router';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { Alert, Image, Linking, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { toast } from 'sonner-native';
 
 const NAVIGATION_TITLE = '登录';
 const URL_RESET_PASSWORD = 'https://jwcjwxt2.fzu.edu.cn/Login/ReSetPassWord';
@@ -44,7 +45,7 @@ const LoginPage: React.FC = () => {
   // 打开服务协议
   const openUserAgreement = useCallback(() => {
     router.push({
-      pathname: '/(guest)/web',
+      pathname: '/web',
       params: {
         url: URL_USER_AGREEMENT,
         title: '服务协议',
@@ -55,7 +56,7 @@ const LoginPage: React.FC = () => {
   // 打开隐私政策
   const openPrivacyPolicy = useCallback(() => {
     router.push({
-      pathname: '/(guest)/web',
+      pathname: '/web',
       params: {
         url: URL_PRIVACY_POLICY,
         title: '隐私政策',
@@ -74,7 +75,7 @@ const LoginPage: React.FC = () => {
           onPress: () =>
             Linking.openURL(URL_RESET_PASSWORD).catch(err => Alert.alert('错误', '无法打开链接(' + err + ')')),
         },
-        { text: '确定', style: 'cancel' },
+        { text: '关闭', style: 'cancel' },
       ],
     );
   }, []);
@@ -158,7 +159,7 @@ const LoginPage: React.FC = () => {
           contentContainerStyle={styles.scrollViewContent}
           keyboardShouldPersistTaps="handled"
         >
-          <ThemedView className="flex-1 justify-between px-6 py-3">
+          <View className="flex-1 justify-between px-6 py-3">
             {/* 左上角标题 */}
             <View className="ml-1 mt-14">
               <Text className="mb-2 text-4xl font-bold">本科生登录</Text>
@@ -256,7 +257,7 @@ const LoginPage: React.FC = () => {
                 </Text>
               </Text>
             </TouchableOpacity>
-          </ThemedView>
+          </View>
         </KeyboardAwareScrollView>
       </SafeAreaView>
     </>

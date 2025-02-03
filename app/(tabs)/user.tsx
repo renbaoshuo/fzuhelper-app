@@ -1,16 +1,18 @@
-import { getApiV1JwchUserInfo } from '@/api/generate';
-import { ThemedView } from '@/components/ThemedView';
-import { Button } from '@/components/ui/button';
-import { Text } from '@/components/ui/text';
-import { useRedirectWithoutHistory } from '@/hooks/useRedirectWithoutHistory';
-import { useSafeResponseSolve } from '@/hooks/useSafeResponseSolve';
-import { JWCH_USER_INFO_KEY } from '@/lib/constants';
-import { clearUserStorage } from '@/utils/user';
-import { AntDesign } from '@expo/vector-icons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Href, Link, Tabs } from 'expo-router';
 import { useCallback, useEffect, useState } from 'react';
 import { Alert, Image, ImageSourcePropType, ScrollView, TouchableOpacity, View } from 'react-native';
+
+import PageContainer from '@/components/page-container';
+import { Button } from '@/components/ui/button';
+import { Text } from '@/components/ui/text';
+
+import { getApiV1JwchUserInfo } from '@/api/generate';
+import { useRedirectWithoutHistory } from '@/hooks/useRedirectWithoutHistory';
+import { useSafeResponseSolve } from '@/hooks/useSafeResponseSolve';
+import { JWCH_USER_INFO_KEY } from '@/lib/constants';
+import { clearUserStorage } from '@/utils/user';
 
 export default function HomePage() {
   const { handleError } = useSafeResponseSolve();
@@ -146,12 +148,13 @@ export default function HomePage() {
           // eslint-disable-next-line react/no-unstable-nested-components
           headerRight: () => (
             <Link href="/(guest)/about" asChild>
-              <AntDesign name="setting" size={24} color="black" className="mr-4" />
+              <Ionicons name="settings-outline" size={24} className="mr-4 text-foreground" />
             </Link>
           ),
         }}
       />
-      <ThemedView className="flex-1">
+
+      <PageContainer>
         <ScrollView>
           <View className="flex-row items-center p-8">
             <Image source={require('@/assets/images/my/avatar_default.png')} className="mr-6 h-24 w-24 rounded-full" />
@@ -161,7 +164,7 @@ export default function HomePage() {
             </View>
           </View>
 
-          <View className="h-full rounded-tr-4xl bg-white px-8">
+          <View className="h-full rounded-tr-4xl bg-background px-8">
             <View className="mt-6">
               <View className="w-full flex-row justify-between">
                 <Text>{userInfo.college}</Text>
@@ -206,7 +209,7 @@ export default function HomePage() {
             </View>
           </View>
         </ScrollView>
-      </ThemedView>
+      </PageContainer>
     </>
   );
 }

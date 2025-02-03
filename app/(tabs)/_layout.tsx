@@ -1,9 +1,10 @@
 import { Tabs, useNavigation } from 'expo-router';
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef } from 'react';
 import { Alert, AppState } from 'react-native';
 
-import { getApiV1JwchPing } from '@/api/generate';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
+
+import { getApiV1JwchPing } from '@/api/generate';
 import { useSafeResponseSolve } from '@/hooks/useSafeResponseSolve';
 
 const NAVIGATION_TITLE = '首页';
