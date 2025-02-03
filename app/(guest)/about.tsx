@@ -8,6 +8,7 @@ import { ThemedView } from '@/components/ThemedView';
 import { Text } from '@/components/ui/text';
 import { URL_PRIVACY_POLICY, URL_USER_AGREEMENT } from '@/lib/constants';
 import { AntDesign } from '@expo/vector-icons';
+import Constants from 'expo-constants';
 import { Stack, router } from 'expo-router';
 import { Image, Linking, Pressable, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -24,7 +25,7 @@ export default function AboutPage() {
             className="mb-6 h-20 w-20 rounded-full bg-white"
           />
           <View>
-            <Text className="text-xl text-primary">7.0.0</Text>
+            <Text className="text-xl text-primary">{Constants.expoConfig?.version ?? ''}</Text>
           </View>
         </View>
 
@@ -99,7 +100,7 @@ export default function AboutPage() {
             <Pressable
               className="flex-row items-center"
               onPress={() => {
-                Linking.openURL('http://www.beian.miit.gov.cn/');
+                Linking.openURL('https://beian.miit.gov.cn/');
               }}
             >
               <Text className="mr-1 text-sm text-muted-foreground">ICP备案号：闽ICP备19020557号-4A</Text>
