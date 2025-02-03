@@ -23,6 +23,22 @@ export const SPLASH_DISPLAY_COUNT = 'splash_display_count';
 export const SPLASH_DATE = 'splash_date';
 export const SPLASH_ID = 'splash_id';
 
+// 课程表
+export const COURSE_SETTINGS_KEY = 'course_settings';
+export const CLASS_SCHEDULES = [
+  ['08:20', '09:05'],
+  ['09:15', '10:00'],
+  ['10:20', '11:05'],
+  ['11:15', '12:00'],
+  ['14:00', '14:45'],
+  ['14:55', '15:40'],
+  ['15:50', '16:35'],
+  ['16:45', '17:30'],
+  ['19:00', '19:45'],
+  ['19:55', '20:40'],
+  ['20:50', '21:35'],
+];
+
 export const NAV_THEME = {
   light: {
     background: 'hsl(0 0% 100%)', // background

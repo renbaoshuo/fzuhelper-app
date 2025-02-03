@@ -19,7 +19,7 @@ const DialogOverlayWeb = React.forwardRef<DialogPrimitive.OverlayRef, DialogPrim
     return (
       <DialogPrimitive.Overlay
         className={cn(
-          'bg-black/80 flex justify-center items-center p-2 absolute top-0 right-0 bottom-0 left-0',
+          'bg-black/50 flex justify-center items-center p-2 absolute top-0 right-0 bottom-0 left-0', // 修改透明度为50%
           open ? 'web:animate-in web:fade-in-0' : 'web:animate-out web:fade-out-0',
           className
         )}
@@ -39,7 +39,7 @@ const DialogOverlayNative = React.forwardRef<
   return (
     <DialogPrimitive.Overlay
       style={StyleSheet.absoluteFill}
-      className={cn('flex bg-black/80 justify-center items-center p-2', className)}
+      className={cn('flex bg-black/40 justify-center items-center p-2', className)}
       {...props}
       ref={ref}
     >

@@ -26,3 +26,7 @@ export type getApiV1LaunchScreenScreenParams = {
   /** 设备类型，android,ios 二选一，注意区分大小写 */
   device: string;
 };
+
+export type getApiV1TermsInfoParams = {
+  term?: string;
+};
